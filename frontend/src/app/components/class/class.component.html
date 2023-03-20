@@ -1,0 +1,163 @@
+<app-navbaradmin></app-navbaradmin>
+<div>
+  <br />
+  <br />
+  <h1 class="titulo2">Clases</h1>
+
+  <!--Boton Agregar clase -->
+  <div
+    class="btn-group"
+    role="group"
+    data-bs-toggle="modal"
+    data-bs-target="#Agregar"
+    aria-label="Button group with nested dropdown"
+  >
+    <button
+      type="button"
+      class="btn btn-dark"
+      data-bs-toggle="modal"
+      data-bs-target="#AgregarClase"
+      routerLink="/addClass"
+    >
+      Agregar
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-dark dropdown-toggle"
+      data-bs-toggle="dropdown"
+      aria-expanded="false"
+    >
+      Filtrar por:
+    </button>
+    <ul class="dropdown-menu">
+      <li>
+        <a class="dropdown-item">Clase: <input type="text" /></a>
+      </li>
+      <li>
+        <a class="dropdown-item"
+          >Hora:
+          <select name="hora">
+            <option>17:00</option>
+            <option>19:00</option>
+            <option>21:00</option>
+          </select></a
+        >
+      </li>
+      <li>
+        <a class="dropdown-item"
+          >Fecha: <input type="date" value="2023-03-08"
+        /></a>
+      </li>
+    </ul>
+  </div>
+  <br />
+  <br />
+  <div class="container">
+    <!--
+        /<div class="row">
+        Cart MAMALONA PARA VISUALIZAR, MODIFICAR, INSCRIBIR Y ELIMINAR-->
+    <div class="card-container">
+      <div
+        class="card"
+        style="max-width: 20rem"
+        *ngFor="let clases of listClases"
+      >
+        <div class="card-body">
+          <img
+            src="../../../assets/GymClass.png"
+            class="card-img-top"
+            alt="..."
+          />
+          <h5 class="card-title">{{ clases.Nombre_Clase }}</h5>
+          <p>{{ clases.Descripcion }}</p>
+          <p>{{ clases.Nombre_Instructor }}</p>
+          <p>{{ clases.Fecha }}</p>
+          <p>{{ clases.Hora }}</p>
+          <p>{{ clases.Cupo }}</p>
+          <!-- Button trigger modal -->
+          <button
+            type="button"
+            class="btn btn-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#ModificarClases"
+            [routerLink]="['/editClass', clases._id]"
+          >
+            Modificar
+          </button>
+          <button
+            type="button"
+            class="btn btn-dark"
+            (click)="eliminarClase(clases._id)"
+          >
+            Eliminar
+          </button>
+
+          <br />
+          <br />
+          <button
+            type="button"
+            class="btn btn-dark"
+            data-bs-toggle="modal"
+            data-bs-target="#Inscribir"
+          >
+            Inscribir
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+  </div>
+  Cart MAMALONA PARA VISUALIZAR, MODIFICAR, INSCRIBIR Y ELIMINAR-->
+<!--Las Carts mamalonas se convirtieron en componetes por que asi lo pidio el guapo del Scrum-->
+<!-- Modal Agregar clase--componente crear-clase -->
+
+<!-- Modal Inscribir a clase -->
+<div
+  class="modal fade"
+  id="Inscribir"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="titulo" id="staticBackdropLabel">Inscribir a Clase</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <select #selectList (change)="selectCamera(selectList.value)">
+          <option *ngFor="let camera of cameras" value="{{ camera.label }}">
+            {{ camera.label }}
+          </option>
+        </select>
+
+        <zxing-scanner
+          style="width: 460px"
+          [enable]="scannerEnabled"
+          [device]="myDevice"
+          (camerasFound)="camerasFoundHandler($event)"
+          (scanSuccess)="scanSuccessHandler($event)"
+        ></zxing-scanner>
+      </div>
+      <div class="modal-footer">
+        <p *ngFor="let result of results">{{ result }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<app-footer></app-footer>

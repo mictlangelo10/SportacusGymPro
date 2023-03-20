@@ -1,0 +1,18 @@
+h1 {
+  font-weight: 70;
+  font-size: 50px;
+  text-align: center;
+}
+.btn-group {
+  padding-left: 80%;
+}
+.card-container {
+  display: flex; /* establece el contenedor como un contenedor flexible */
+  flex-wrap: nowrap; /* asegura que las tarjetas no se envuelvan a la siguiente línea */
+  overflow-x: scroll; /* permite desplazarse horizontalmente si hay más tarjetas de las que caben en la pantalla */
+}
+
+.card {
+  flex: 0 0 auto; /* asegura que las tarjetas tengan el mismo ancho */
+  margin-right: 10px; /* establece un margen entre las tarjetas */
+}

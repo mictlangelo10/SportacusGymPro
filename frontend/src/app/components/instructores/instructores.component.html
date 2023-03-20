@@ -1,0 +1,59 @@
+<app-navbaradmin></app-navbaradmin>
+<div>
+  <br />
+  <br />
+  <h1 class="titulo2">Instructores</h1>
+
+  <!--Boton Agregar couch -->
+
+  <div class="Btn-Agregar">
+    <button
+      type="button"
+      class="btn btn-dark"
+      data-bs-toggle="modal"
+      data-bs-target="#AgregarCouch"
+      routerLink="/addCoach"
+    >
+      Agregar
+    </button>
+  </div>
+  <br />
+  <div class="card-container">
+    <div
+      class="card"
+      style="max-width: 20rem"
+      *ngFor="let instructores of listInstructores"
+    >
+      <div class="card-body">
+        <img src="../../../assets/UserIns.png" class="card-img-top" alt="..." />
+        <h5 class="card-title">{{ instructores.Nombre_Completo }}</h5>
+        <p>{{ instructores.Edad }}</p>
+        <p>{{ instructores.Correo }}</p>
+        <p>{{ instructores.Telefono }}</p>
+        <p>{{ instructores.Especialidad }}</p>
+        <p>{{ instructores.Foto_Instructor }}</p>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-dark"
+          data-bs-toggle="modal"
+          data-bs-target="#Modificar"
+          routerLink="/editCoach"
+        >
+          Modificar
+        </button>
+        <button
+          type="button"
+          class="btn btn-dark"
+          (click)="eliminarInstructor(instructores._id)"
+        >
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<app-footer></app-footer>

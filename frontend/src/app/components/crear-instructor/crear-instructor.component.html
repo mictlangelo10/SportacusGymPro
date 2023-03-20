@@ -1,0 +1,167 @@
+<app-navbaradmin></app-navbaradmin>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="card">
+        <div class="card-body text-center">
+          <span class="titulo">AGREGAR INSTRUCTOR</span>
+          <form
+            class="mb-3"
+            [formGroup]="couchForm"
+            (ngSubmit)="(agregarCoach)"
+          >
+            <div>
+              <br />
+              <input
+                formControlName="Nombre_Completo"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Nombre del Instructor"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  couchForm.get('Nombre_Completo')?.hasError('required') &&
+                  couchForm.get('Nombre_Completo')?.touched
+                "
+              >
+                <span
+                  >El Nombre del Instructor
+                  <strong>es obligatorio</strong></span
+                >
+              </div>
+            </div>
+            <div>
+              <br />
+              <input
+                formControlName="Edad"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Edad del Instructor"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  couchForm.get('Edad')?.hasError('required') &&
+                  couchForm.get('Edad')?.touched
+                "
+              >
+                <span
+                  >La Edad del Instructor <strong>es obligatoria</strong></span
+                >
+              </div>
+            </div>
+            <div>
+              <br />
+              <input
+                formControlName="Correo"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Correo del Instructor"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  couchForm.get('Correo')?.hasError('required') &&
+                  couchForm.get('Correo')?.touched
+                "
+              >
+                <span
+                  >El Correo del Instructor
+                  <strong>es obligatorio</strong></span
+                >
+              </div>
+            </div>
+            <div>
+              <br />
+              <input
+                formControlName="Telefono"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Teléfono del Instructor"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  couchForm.get('Telefono')?.hasError('required') &&
+                  couchForm.get('Telefono')?.touched
+                "
+              >
+                <span
+                  >El Telefono del Instructor
+                  <strong>es obligatorio</strong></span
+                >
+              </div>
+            </div>
+            <br />
+            <div class="espe">
+              <label for="especialidad" formControlName="Especialidad"
+                >Especialidad:</label
+              >
+              <select name="especialidad" id="espeIntructores">
+                <option value="nutri">Nutriología</option>
+                <option value="ef">Entrenamiento Fisico</option>
+                <option value="modm">Modelado de Musculo</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  couchForm.get('Especialidad')?.hasError('required') &&
+                  couchForm.get('Especialidad')?.touched
+                "
+              >
+                <span
+                  >La Especialidad del Instructor
+                  <strong>es obligatoria</strong></span
+                >
+              </div>
+            </div>
+            <div>
+              <br />
+              <input
+                formControlName="Foto_Instructor"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Foto del Instructor"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  couchForm.get('Foto_Instructor')?.hasError('required') &&
+                  couchForm.get('Foto_Instructor')?.touched
+                "
+              >
+                <span
+                  >La Foto del Instructor <strong>es obligatoria</strong></span
+                >
+              </div>
+            </div>
+            <br />
+            <br />
+            <div class="mb-3">
+              <button
+                routerLink="/instructores"
+                class="btn btn-outline-dark btn-lg float-end"
+              >
+                Volver
+              </button>
+              <button
+                type="button"
+                class="btn btn-outline-secondary btn-lg float-end"
+                [disabled]="couchForm.invalid"
+              >
+                Guardar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+<br />
+<br />
+<app-footer></app-footer>
