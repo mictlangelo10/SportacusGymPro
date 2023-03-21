@@ -5,14 +5,13 @@
     <div class="col-lg-6 offset-lg-3">
       <div class="card">
         <div class="card-body text-center">
-          <span class="titulo">AGREGAR INSTRUCTOR</span>
+          <span class="titulo">{{ titulopro | uppercase }}</span>
           <form
             class="mb-3"
-            [formGroup]="couchForm"
-            (ngSubmit)="(agregarCoach)"
+            [formGroup]="instructorForm"
+            (ngSubmit)="agregarInstructor()"
           >
-            <div>
-              <br />
+            <div class="mt-3">
               <input
                 formControlName="Nombre_Completo"
                 type="text"
@@ -22,8 +21,8 @@
               <div
                 class="text-danger"
                 *ngIf="
-                  couchForm.get('Nombre_Completo')?.hasError('required') &&
-                  couchForm.get('Nombre_Completo')?.touched
+                  instructorForm.get('Nombre_Completo')?.hasError('required') &&
+                  instructorForm.get('Nombre_Completo')?.touched
                 "
               >
                 <span
@@ -32,19 +31,18 @@
                 >
               </div>
             </div>
-            <div>
-              <br />
+            <div class="mt-3">
               <input
                 formControlName="Edad"
-                type="text"
+                type="number"
                 class="form-control form-control-lg"
                 placeholder="Edad del Instructor"
               />
               <div
                 class="text-danger"
                 *ngIf="
-                  couchForm.get('Edad')?.hasError('required') &&
-                  couchForm.get('Edad')?.touched
+                  instructorForm.get('Edad')?.hasError('required') &&
+                  instructorForm.get('Edad')?.touched
                 "
               >
                 <span
@@ -52,8 +50,7 @@
                 >
               </div>
             </div>
-            <div>
-              <br />
+            <div class="mt-3">
               <input
                 formControlName="Correo"
                 type="text"
@@ -63,8 +60,8 @@
               <div
                 class="text-danger"
                 *ngIf="
-                  couchForm.get('Correo')?.hasError('required') &&
-                  couchForm.get('Correo')?.touched
+                  instructorForm.get('Correo')?.hasError('required') &&
+                  instructorForm.get('Correo')?.touched
                 "
               >
                 <span
@@ -73,19 +70,18 @@
                 >
               </div>
             </div>
-            <div>
-              <br />
+            <div class="mt-3">
               <input
                 formControlName="Telefono"
-                type="text"
+                type="number"
                 class="form-control form-control-lg"
                 placeholder="Teléfono del Instructor"
               />
               <div
                 class="text-danger"
                 *ngIf="
-                  couchForm.get('Telefono')?.hasError('required') &&
-                  couchForm.get('Telefono')?.touched
+                  instructorForm.get('Telefono')?.hasError('required') &&
+                  instructorForm.get('Telefono')?.touched
                 "
               >
                 <span
@@ -94,21 +90,19 @@
                 >
               </div>
             </div>
-            <br />
-            <div class="espe">
-              <label for="especialidad" formControlName="Especialidad"
-                >Especialidad:</label
-              >
-              <select name="especialidad" id="espeIntructores">
-                <option value="nutri">Nutriología</option>
-                <option value="ef">Entrenamiento Fisico</option>
-                <option value="modm">Modelado de Musculo</option>
-              </select>
+
+            <div class="mt-3">
+              <input
+                formControlName="Especialidad"
+                type="text"
+                class="form-control form-control-lg"
+                placeholder="Especialidad"
+              />
               <div
                 class="text-danger"
                 *ngIf="
-                  couchForm.get('Especialidad')?.hasError('required') &&
-                  couchForm.get('Especialidad')?.touched
+                  instructorForm.get('Especialidad')?.hasError('required') &&
+                  instructorForm.get('Especialidad')?.touched
                 "
               >
                 <span
@@ -117,8 +111,7 @@
                 >
               </div>
             </div>
-            <div>
-              <br />
+            <div class="mt-3">
               <input
                 formControlName="Foto_Instructor"
                 type="text"
@@ -128,8 +121,8 @@
               <div
                 class="text-danger"
                 *ngIf="
-                  couchForm.get('Foto_Instructor')?.hasError('required') &&
-                  couchForm.get('Foto_Instructor')?.touched
+                  instructorForm.get('Foto_Instructor')?.hasError('required') &&
+                  instructorForm.get('Foto_Instructor')?.touched
                 "
               >
                 <span
@@ -137,9 +130,8 @@
                 >
               </div>
             </div>
-            <br />
-            <br />
-            <div class="mb-3">
+
+            <div class="mt-3">
               <button
                 routerLink="/instructores"
                 class="btn btn-outline-dark btn-lg float-end"
@@ -149,7 +141,7 @@
               <button
                 type="submit"
                 class="btn btn-outline-secondary btn-lg float-end"
-                [disabled]="couchForm.invalid"
+                [disabled]="instructorForm.invalid"
               >
                 Guardar
               </button>
@@ -160,8 +152,4 @@
     </div>
   </div>
 </div>
-<br />
-<br />
-<br />
-<br />
 <app-footer></app-footer>

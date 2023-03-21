@@ -18,7 +18,15 @@ export class InstructoresService {
     return this.http.delete(this.url + id);
   }
 
-  guardarInstructores(instructores: instructores): Observable<any> {
+  guardarInstructor(instructores: instructores): Observable<any> {
     return this.http.post(this.url, instructores);
+  }
+
+  obtenerInstructor(id: string): Observable<any> {
+    return this.http.get(this.url + id);
+  }
+
+  editarInstructor(id: string, clase: instructores): Observable<any> {
+    return this.http.put(this.url + id, clase);
   }
 }

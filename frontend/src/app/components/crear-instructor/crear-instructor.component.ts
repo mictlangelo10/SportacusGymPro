@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { instructores } from 'src/app/models/instructores';
+import { InstructoresService } from 'src/app/services/instructores.service';
 
 @Component({
   selector: 'app-crear-instructor',
@@ -9,10 +10,17 @@ import { instructores } from 'src/app/models/instructores';
   styleUrls: ['./crear-instructor.component.css'],
 })
 export class CrearInstructorComponent implements OnInit {
-  couchForm: FormGroup;
+  instructorForm: FormGroup;
+  titulopro = 'Agregar Instructor';
+  id: string | null;
 
-  constructor(private fb: FormBuilder, private router: Router) {
-    this.couchForm = this.fb.group({
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private _instructoresService: InstructoresService,
+    private aRouter: ActivatedRoute
+  ) {
+    this.instructorForm = this.fb.group({
       Nombre_Completo: ['', Validators.required],
       Edad: ['', Validators.required],
       Correo: ['', Validators.required],
@@ -20,20 +28,66 @@ export class CrearInstructorComponent implements OnInit {
       Especialidad: ['', Validators.required],
       Foto_Instructor: ['', Validators.required],
     });
+    this.id = this.aRouter.snapshot.paramMap.get('id');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.esEditar();
+  }
 
-  //Método para agregar a los Instructores
-  agregarCoach() {
+  agregarInstructor() {
     const INSTRUCTOR: instructores = {
-      Nombre_Completo: this.couchForm.get('Nombre_Completo')?.value,
-      Edad: this.couchForm.get('Edad')?.value,
-      Correo: this.couchForm.get('Correo')?.value,
-      Telefono: this.couchForm.get('Telefono')?.value,
-      Especialidad: this.couchForm.get('Expecialidad')?.value,
-      Foto_Instructor: this.couchForm.get('Foto_Instructor')?.value,
+      Nombre_Completo: this.instructorForm.get('Nombre_Completo')?.value,
+      Edad: this.instructorForm.get('Edad')?.value,
+      Correo: this.instructorForm.get('Correo')?.value,
+      Telefono: this.instructorForm.get('Telefono')?.value,
+      Especialidad: this.instructorForm.get('Especialidad')?.value,
+      Foto_Instructor: this.instructorForm.get('Foto_Instructor')?.value,
     };
-    console.log(INSTRUCTOR);
+
+    if (this.id !== null) {
+      //Editando Instructor
+      this._instructoresService.editarInstructor(this.id, INSTRUCTOR).subscribe(
+        (data) => {
+          alert('Instructor Actualizado alv');
+          this.router.navigate(['/instructores']);
+        },
+        (error) => {
+          console.log(error);
+          alert('No se pudo bb');
+          this.instructorForm.reset();
+        }
+      );
+    } else {
+      //Agregando Instructor
+      console.log(INSTRUCTOR);
+      this._instructoresService.guardarInstructor(INSTRUCTOR).subscribe(
+        (data) => {
+          alert('Se pudo mi amor');
+          this.router.navigate(['/instructores']);
+        },
+        (error) => {
+          console.log(error);
+          alert('No se pudo bb');
+          this.instructorForm.reset();
+        }
+      );
+    }
+  }
+
+  esEditar() {
+    if (this.id !== null) {
+      this.titulopro = 'Editar Instructor';
+      this._instructoresService.obtenerInstructor(this.id).subscribe((data) => {
+        this.instructorForm.setValue({
+          Nombre_Completo: data.Nombre_Completo,
+          Edad: data.Edad,
+          Correo: data.Correo,
+          Telefono: data.Telefono,
+          Especialidad: data.Especialidad,
+          Foto_Instructor: data.Foto_Instructor,
+        });
+      });
+    }
   }
 }

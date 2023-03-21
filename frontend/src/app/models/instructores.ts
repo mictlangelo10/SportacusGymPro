@@ -5,7 +5,7 @@ export class instructores {
   Correo: string;
   Telefono: number;
   Especialidad: string;
-  Foto_Instructor: string;
+  Foto_Instructor: File;
 
   constructor(
     Nombre_Completo: string,
@@ -13,7 +13,7 @@ export class instructores {
     Correo: string,
     Telefono: number,
     Especialidad: string,
-    Foto_Instructor: string
+    Foto_Instructor: File
   ) {
     this.Nombre_Completo = Nombre_Completo;
     this.Edad = Edad;
