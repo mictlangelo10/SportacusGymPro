@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { InstructoresService } from 'src/app/services/instructores.service';
 import { clases } from 'src/app/models/clases';
+import { instructores } from 'src/app/models/instructores';
 import { ClasesService } from 'src/app/services/clases.service';
 
 @Component({
@@ -14,12 +15,14 @@ export class CrearClaseComponent implements OnInit {
   classForm: FormGroup;
   titulo = 'Crear Clase';
   id: string | null;
+  listInstuctores: instructores[] = [];
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private _clasesService: ClasesService,
-    private aRouter: ActivatedRoute
+    private aRouter: ActivatedRoute,
+    private _instructorServices: InstructoresService
   ) {
     this.classForm = this.fb.group({
       Nombre_Clase: ['', Validators.required],
@@ -35,6 +38,7 @@ export class CrearClaseComponent implements OnInit {
 
   ngOnInit(): void {
     this.esEditar();
+    this.consultaInstructor();
   }
 
   agregarClase() {
@@ -93,5 +97,16 @@ export class CrearClaseComponent implements OnInit {
         });
       });
     }
+  }
+
+  consultaInstructor() {
+    this._instructorServices.getInstructores().subscribe(
+      (resp) => {
+        this.listInstuctores = resp;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 }
