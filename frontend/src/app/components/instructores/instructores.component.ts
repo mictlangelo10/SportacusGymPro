@@ -10,21 +10,11 @@ import { InstructoresService } from 'src/app/services/instructores.service';
 })
 export class InstructoresComponent implements OnInit {
   listInstructores: instructores[] = [];
-  instructorForm: FormGroup;
 
   constructor(
     private _instructoresService: InstructoresService,
     private fb: FormBuilder
-  ) {
-    this.instructorForm = this.fb.group({
-      Nombre_Completo: ['', Validators.required],
-      Edad: ['', Validators.required],
-      Correo: ['', Validators.required],
-      Telefono: ['', Validators.required],
-      Especialidad: ['', Validators.required],
-      Foto_Instructor: ['', Validators.required],
-    });
-  }
+  ) {}
   ngOnInit(): void {
     this.obtenerInstructores();
   }

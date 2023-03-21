@@ -23,7 +23,7 @@ export class CrearInstructorComponent implements OnInit {
     this.instructorForm = this.fb.group({
       Nombre_Completo: ['', Validators.required],
       Edad: ['', Validators.required],
-      Correo: ['', Validators.required],
+      Correo: ['', [Validators.required, Validators.email]],
       Telefono: ['', Validators.required],
       Especialidad: ['', Validators.required],
       Foto_Instructor: ['', Validators.required],
