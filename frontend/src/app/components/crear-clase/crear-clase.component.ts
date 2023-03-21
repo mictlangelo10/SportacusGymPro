@@ -11,7 +11,7 @@ import { ClasesService } from 'src/app/services/clases.service';
 })
 export class CrearClaseComponent implements OnInit {
   classForm: FormGroup;
-  titulo = 'Agregar Clase';
+  titulo = 'Crear Clase';
   id: string | null;
 
   constructor(
@@ -46,29 +46,31 @@ export class CrearClaseComponent implements OnInit {
       Cupo: this.classForm.get('Cupo')?.value,
       Foto_Clase: this.classForm.get('Foto_Clase')?.value,
     };
-    if (this.id != null) {
-      //Editamos producto
+
+    if (this.id !== null) {
+      //Editando Clase
       this._clasesService.editarClase(this.id, CLASE).subscribe(
         (data) => {
-          alert('Se ha podido chaval');
-          this.router.navigate(['/']);
+          alert('Clase Actualizada alv');
+          this.router.navigate(['/class']);
         },
         (error) => {
           console.log(error);
-          alert('No se ha podido');
+          alert('No se pudo bb');
           this.classForm.reset();
         }
       );
     } else {
-      //Agregamos producto
+      //Agregando Clase
       console.log(CLASE);
       this._clasesService.guardarClase(CLASE).subscribe(
         (data) => {
-          alert('Se ha podido chaval');
-          this.router.navigate(['/']);
+          alert('Se pudo mi amor');
+          this.router.navigate(['/class']);
         },
         (error) => {
           console.log(error);
+          alert('No se pudo bb');
           this.classForm.reset();
         }
       );
