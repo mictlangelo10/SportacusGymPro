@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { clases } from '../models/clases';
 
 @Pipe({
-  name: 'filter',
+  name: 'fecha',
 })
-export class FilterPipe implements PipeTransform {
+export class FechaPipe implements PipeTransform {
   transform(value: any, filtertring: string) {
     if (value.length === 0 || filtertring === '') {
       return value;
@@ -12,7 +11,7 @@ export class FilterPipe implements PipeTransform {
     const clases = [];
 
     for (const clase of value) {
-      if (clase['Nombre_Clase'] === filtertring) {
+      if (clase['Fecha'] === filtertring) {
         clases.push(clase);
       }
     }

@@ -39,15 +39,16 @@
               type="text"
               placeholder="Buscar Clase"
               class="form-control"
-              [(ngModel)]="filteredString"
-          /></a>
+              [(ngModel)]="filteredClase"
+            />
+          </a>
         </li>
         <li>
           <a class="dropdown-item"
             >Hora:
             <input
               class="form-control"
-              [(ngModel)]="filteredString"
+              [(ngModel)]="filteredHora"
               type="time"
               id="time1"
               value="05:00"
@@ -62,7 +63,7 @@
               type="date"
               value=""
               class="form-control"
-              [(ngModel)]="filteredString"
+              [(ngModel)]="filteredFecha"
           /></a>
         </li>
       </div>
@@ -76,7 +77,12 @@
     <div
       class="card"
       style="max-width: 20rem"
-      *ngFor="let clases of listClases | filter : filteredString"
+      *ngFor="
+        let clases of listClases
+          | filter : filteredClase
+          | fecha : filteredFecha
+          | horaa : filteredHora
+      "
     >
       <div class="card-body">
         <img

@@ -13,17 +13,16 @@ import { ClasesService } from 'src/app/services/clases.service';
 })
 export class ClassComponent implements OnInit {
   listClases: clases[] = [];
-  filteredString: string = '';
+  filteredClase: string = '';
+  filteredFecha: string = '';
+  filteredHora: string = '';
   public cameras: MediaDeviceInfo[] = [];
   public myDevice!: MediaDeviceInfo;
   public scannerEnabled = false;
   public results: string[] = [];
 
   //Este no supe si quitarlo o no asi que mejor lo deje tal cual pero en el crear clase esta de igual manera tu decides :)
-  constructor(
-    private _clasesService: ClasesService,
-    private http: HttpClientModule
-  ) {}
+  constructor(private _clasesService: ClasesService) {}
 
   ngOnInit(): void {
     this.obtenerClases();

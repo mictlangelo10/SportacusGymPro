@@ -13,6 +13,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { CrearInstructorComponent } from './components/crear-instructor/crear-instructor.component';
 import { FilterPipe } from './Pipes/filter.pipe';
+import { FechaPipe } from './Pipes/fecha.pipe';
+import { HoraPipe } from './Pipes/hora.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { FilterPipe } from './Pipes/filter.pipe';
     CrearClaseComponent,
     CrearInstructorComponent,
     FilterPipe,
+    FechaPipe,
+    HoraPipe,
   ],
   imports: [
     BrowserModule,
