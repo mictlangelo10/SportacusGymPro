@@ -1,4 +1,8 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { query } from 'express';
+import { debounceTime } from 'rxjs';
 import { clases } from 'src/app/models/clases';
 import { ClasesService } from 'src/app/services/clases.service';
 
@@ -9,13 +13,17 @@ import { ClasesService } from 'src/app/services/clases.service';
 })
 export class ClassComponent implements OnInit {
   listClases: clases[] = [];
+  filteredString: string = '';
   public cameras: MediaDeviceInfo[] = [];
   public myDevice!: MediaDeviceInfo;
   public scannerEnabled = false;
   public results: string[] = [];
 
   //Este no supe si quitarlo o no asi que mejor lo deje tal cual pero en el crear clase esta de igual manera tu decides :)
-  constructor(private _clasesService: ClasesService) {}
+  constructor(
+    private _clasesService: ClasesService,
+    private http: HttpClientModule
+  ) {}
 
   ngOnInit(): void {
     this.obtenerClases();
@@ -56,7 +64,7 @@ export class ClassComponent implements OnInit {
   eliminarClase(id: any) {
     this._clasesService.eliminarClase(id).subscribe(
       (data) => {
-        alert('Se pudo pa');
+        alert('Clase Eliminada');
         this.obtenerClases();
       },
       (error) => {

@@ -56,12 +56,12 @@ export class CrearClaseComponent implements OnInit {
       //Editando Clase
       this._clasesService.editarClase(this.id, CLASE).subscribe(
         (data) => {
-          alert('Clase Actualizada alv');
+          alert('Clase Actualizada');
           this.router.navigate(['/class']);
         },
         (error) => {
           console.log(error);
-          alert('No se pudo bb');
+          alert('Error al Actualizar');
           this.classForm.reset();
         }
       );
@@ -70,12 +70,12 @@ export class CrearClaseComponent implements OnInit {
       console.log(CLASE);
       this._clasesService.guardarClase(CLASE).subscribe(
         (data) => {
-          alert('Se pudo mi amor');
+          alert('Clase Creada');
           this.router.navigate(['/class']);
         },
         (error) => {
           console.log(error);
-          alert('No se pudo bb');
+          alert('Error al Crear Clase');
           this.classForm.reset();
         }
       );

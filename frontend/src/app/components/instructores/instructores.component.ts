@@ -33,7 +33,7 @@ export class InstructoresComponent implements OnInit {
   eliminarInstructor(id: any) {
     this._instructoresService.eliminarInstructor(id).subscribe(
       (data) => {
-        alert('Se pudo pa');
+        alert('Instructor Eliminado');
         this.obtenerInstructores();
       },
       (error) => {

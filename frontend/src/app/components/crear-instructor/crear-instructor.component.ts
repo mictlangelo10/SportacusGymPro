@@ -49,12 +49,12 @@ export class CrearInstructorComponent implements OnInit {
       //Editando Instructor
       this._instructoresService.editarInstructor(this.id, INSTRUCTOR).subscribe(
         (data) => {
-          alert('Instructor Actualizado alv');
+          alert('Instructor Actualizado');
           this.router.navigate(['/instructores']);
         },
         (error) => {
           console.log(error);
-          alert('No se pudo bb');
+          alert('Error al Actualizar Instructor');
           this.instructorForm.reset();
         }
       );
@@ -63,12 +63,12 @@ export class CrearInstructorComponent implements OnInit {
       console.log(INSTRUCTOR);
       this._instructoresService.guardarInstructor(INSTRUCTOR).subscribe(
         (data) => {
-          alert('Se pudo mi amor');
+          alert('Instructor Agregado');
           this.router.navigate(['/instructores']);
         },
         (error) => {
           console.log(error);
-          alert('No se pudo bb');
+          alert('Error al Agregar Instructor');
           this.instructorForm.reset();
         }
       );

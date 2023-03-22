@@ -9,9 +9,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbaradminComponent } from './components/navbaradmin/navbaradmin.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { CrearInstructorComponent } from './components/crear-instructor/crear-instructor.component';
+import { FilterPipe } from './Pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CrearInstructorComponent } from './components/crear-instructor/crear-in
     FooterComponent,
     CrearClaseComponent,
     CrearInstructorComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
@@ -30,6 +32,7 @@ import { CrearInstructorComponent } from './components/crear-instructor/crear-in
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

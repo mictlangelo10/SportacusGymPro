@@ -31,77 +31,93 @@
       Filtrar por:
     </button>
     <ul class="dropdown-menu">
-      <li>
-        <a class="dropdown-item">Clase: <input type="text" /></a>
-      </li>
-      <li>
-        <a class="dropdown-item"
-          >Hora:
-          <select name="hora">
-            <option>17:00</option>
-            <option>19:00</option>
-            <option>21:00</option>
-          </select></a
-        >
-      </li>
-      <li>
-        <a class="dropdown-item">Fecha: <input type="date" value="" /></a>
-      </li>
-      <button type="button" class="btn btn-dark mt-3 float-end">Filtrar</button>
+      <div fxLayout="row">
+        <li>
+          <a class="dropdown-item"
+            >Clase:
+            <input
+              type="text"
+              placeholder="Buscar Clase"
+              class="form-control"
+              [(ngModel)]="filteredString"
+          /></a>
+        </li>
+        <li>
+          <a class="dropdown-item"
+            >Hora:
+            <input
+              class="form-control"
+              [(ngModel)]="filteredString"
+              type="time"
+              id="time1"
+              value="05:00"
+              min="05:00"
+              max="09:00"
+          /></a>
+        </li>
+        <li>
+          <a class="dropdown-item"
+            >Fecha:
+            <input
+              type="date"
+              value=""
+              class="form-control"
+              [(ngModel)]="filteredString"
+          /></a>
+        </li>
+      </div>
     </ul>
   </div>
 
-  <div class="container">
-    <!--
+  <!--
         /<div class="row">
         Cart MAMALONA PARA VISUALIZAR, MODIFICAR, INSCRIBIR Y ELIMINAR-->
-    <div class="card-container">
-      <div
-        class="card"
-        style="max-width: 20rem"
-        *ngFor="let clases of listClases"
-      >
-        <div class="card-body">
-          <img
-            src="../../../assets/GymClass.png"
-            class="card-img-top"
-            alt="..."
-          />
-          <h5 class="card-title">{{ clases.Nombre_Clase }}</h5>
-          <p>{{ clases.Descripcion }}</p>
-          <p>{{ clases.Nombre_Instructor }}</p>
-          <p>{{ clases.Fecha }}</p>
-          <p>{{ clases.Hora }}</p>
-          <p>{{ clases.Cupo }}</p>
-          <!-- Button trigger modal -->
-          <button
-            type="button"
-            class="btn btn-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#ModificarClases"
-            [routerLink]="['/editClass', clases._id]"
-          >
-            Modificar
-          </button>
-          <button
-            type="button"
-            class="btn btn-dark"
-            (click)="eliminarClase(clases._id)"
-          >
-            Eliminar
-          </button>
+  <div class="card-container">
+    <div
+      class="card"
+      style="max-width: 20rem"
+      *ngFor="let clases of listClases | filter : filteredString"
+    >
+      <div class="card-body">
+        <img
+          src="../../../assets/GymClass.png"
+          class="card-img-top"
+          alt="..."
+        />
+        <h5 class="card-title">Clase: {{ clases.Nombre_Clase }}</h5>
+        <p>Descripción: {{ clases.Descripcion }}</p>
+        <p>Instructor: {{ clases.Nombre_Instructor }}</p>
+        <p>Fecha: {{ clases.Fecha }}</p>
+        <p>Hora: {{ clases.Hora }}</p>
+        <p>Cupo: {{ clases.Cupo }}</p>
+        <!-- Button trigger modal -->
+        <button
+          type="button"
+          class="btn btn-dark"
+          data-bs-toggle="modal"
+          data-bs-target="#ModificarClases"
+          [routerLink]="['/editClass', clases._id]"
+        >
+          Modificar
+        </button>
+        <button
+          type="button"
+          class="btn btn-dark"
+          (click)="eliminarClase(clases._id)"
+        >
+          Eliminar
+        </button>
 
-          <br />
-          <br />
-          <button
-            type="button"
-            class="btn btn-dark"
-            data-bs-toggle="modal"
-            data-bs-target="#Inscribir"
-          >
-            Inscribir
-          </button>
-        </div>
+        <br />
+        <br />
+        <button
+          type="button"
+          class="btn btn-dark"
+          data-bs-toggle="modal"
+          data-bs-target="#Inscribir"
+        >
+          Inscribir
+        </button>
       </div>
     </div>
   </div>
