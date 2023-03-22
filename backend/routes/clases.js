@@ -9,6 +9,7 @@ router.get('/', claseController.obtenerClases);
 router.put('/:id', claseController.actualizarClase);
 router.get('/:id', claseController.obtenerClase);
 router.delete('/:id', claseController.eliminarClase);
+router.post('/:id', claseController.qr)
 
 
 module.exports = router;

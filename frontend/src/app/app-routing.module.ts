@@ -6,6 +6,7 @@ import { InstructoresComponent } from './components/instructores/instructores.co
 import { ClassComponent } from './components/class/class.component';
 import { CrearClaseComponent } from './components/crear-clase/crear-clase.component';
 import { CrearInstructorComponent } from './components/crear-instructor/crear-instructor.component';
+import { ReloadComponent } from './components/reload/reload.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'editClass/:id', component: CrearClaseComponent },
   { path: 'editCoach/:id', component: CrearInstructorComponent },
   { path: '""', redirectTo: '', pathMatch: 'full' },
+  { path: 'reload', component: ReloadComponent },
 ];
 
 @NgModule({

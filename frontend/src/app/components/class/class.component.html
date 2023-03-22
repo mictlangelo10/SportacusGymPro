@@ -121,6 +121,7 @@
           class="btn btn-dark"
           data-bs-toggle="modal"
           data-bs-target="#Inscribir"
+          (click)="setId(clases._id)"
         >
           Inscribir
         </button>
@@ -154,6 +155,7 @@
           class="btn-close"
           data-bs-dismiss="modal"
           aria-label="Close"
+          #close
         ></button>
       </div>
       <div class="modal-body">

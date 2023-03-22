@@ -92,3 +92,18 @@ exports.eliminarClase = async (req, res) => {
 
     }
 }
+
+exports.qr = async (req, res) => {
+    try {
+        let data = await Clase.findOne({ _id: req.params.id })
+        if (data.Cupo > 0) {
+            let clase = await Clase.updateOne({ _id: req.params.id }, { $set: { Cupo: data.Cupo - 1 } })
+            res.json({ msg: 'Clase actualizada' })
+        } else {
+            res.json({ msg: 'El cupo esta lleno' })
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Hubo un error");
+    }
+}

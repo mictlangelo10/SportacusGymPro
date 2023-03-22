@@ -15,6 +15,7 @@ import { CrearInstructorComponent } from './components/crear-instructor/crear-in
 import { FilterPipe } from './Pipes/filter.pipe';
 import { FechaPipe } from './Pipes/fecha.pipe';
 import { HoraPipe } from './Pipes/hora.pipe';
+import { ReloadComponent } from './components/reload/reload.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { HoraPipe } from './Pipes/hora.pipe';
     FilterPipe,
     FechaPipe,
     HoraPipe,
+    ReloadComponent,
   ],
   imports: [
     BrowserModule,

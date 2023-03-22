@@ -34,4 +34,8 @@ export class ClasesService {
   consultarInstructor(Nombre_Instructor: string): Observable<any> {
     return this.http.get(this.urlin + Nombre_Instructor);
   }
+
+  updateQr(id: any) {
+    return this.http.post(this.url + id, null);
+  }
 }
