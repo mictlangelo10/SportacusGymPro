@@ -69,6 +69,12 @@ export class ClassComponent implements OnInit {
     });
   }
 
+  limpiarFiltros() {
+    this.filteredClase = '';
+    this.filteredHora = ''; // valor por defecto
+    this.filteredFecha = ''; // valor por defecto
+  }
+
   obtenerClases() {
     this._clasesService.getClases().subscribe(
       (data) => {

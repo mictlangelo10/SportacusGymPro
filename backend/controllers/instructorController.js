@@ -1,3 +1,4 @@
+const Clase = require("../models/Clase");
 const Instructor = require("../models/Instructor");
 
 exports.agregarInstructor = async (req, res) => {
@@ -79,11 +80,11 @@ exports.eliminarInstructor = async (req, res) => {
         let instructor = await Instructor.findById(req.params.id);
 
         if (!instructor) {
-            res.status(404).json({ msg: "No existe la clase" });
+            res.status(404).json({ msg: "No existe el instructor" });
         }
 
         await Instructor.findOneAndRemove({ _id: req.params.id })
-        res.json({ msg: 'Instructor eliminado exitosamente' });
+        res.json({ msg: 'Instructor eliminado' });
 
     } catch (error) {
         console.log(error);
