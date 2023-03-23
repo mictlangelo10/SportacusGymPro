@@ -2,7 +2,7 @@
 <div>
   <br />
   <br />
-  <h1 class="titulo2">Instructores</h1>
+  <h1 class="titulo1">Instructores</h1>
 
   <!--Boton Agregar couch -->
 
@@ -25,17 +25,20 @@
       *ngFor="let instructores of listInstructores"
     >
       <div class="card-body">
-        <img src="../../../assets/UserIns.png" class="card-img-top" alt="..." />
+        <img
+          src="{{ instructores.Foto_Instructor }}"
+          class="card-img-top"
+          alt="Imagen del instructor"
+        />
         <h5 class="card-title">Nombre: {{ instructores.Nombre_Completo }}</h5>
         <p>Edad: {{ instructores.Edad }}</p>
         <p>Email: {{ instructores.Correo }}</p>
         <p>Teléfono: {{ instructores.Telefono }}</p>
         <p>Especialidad: {{ instructores.Especialidad }}</p>
-        <p>Foto: {{ instructores.Foto_Instructor }}</p>
         <!-- Button trigger modal -->
         <button
           type="button"
-          class="btn btn-dark"
+          class="btn btn-dark float-start"
           data-bs-toggle="modal"
           data-bs-target="#Modificar"
           [routerLink]="['/editCoach', instructores._id]"
@@ -44,7 +47,7 @@
         </button>
         <button
           type="button"
-          class="btn btn-dark"
+          class="btn btn-danger float-end"
           (click)="eliminarInstructor(instructores._id)"
         >
           Eliminar

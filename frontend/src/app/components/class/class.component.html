@@ -2,7 +2,7 @@
 <div>
   <br />
   <br />
-  <h1 class="titulo2">Clases</h1>
+  <h1 class="titulo1">Clases</h1>
 
   <!--Boton Agregar clase -->
   <div
@@ -73,6 +73,9 @@
   <!--
         /<div class="row">
         Cart MAMALONA PARA VISUALIZAR, MODIFICAR, INSCRIBIR Y ELIMINAR-->
+  <br /><br />
+  <br /><br />
+
   <div class="card-container">
     <div
       class="card"
@@ -86,20 +89,20 @@
     >
       <div class="card-body">
         <img
-          src="../../../assets/GymClass.png"
+          src="{{ clases.Foto_Clase }}"
           class="card-img-top"
-          alt="..."
+          alt="Imagen de la clase"
         />
         <h5 class="card-title">Clase: {{ clases.Nombre_Clase }}</h5>
         <p>Descripción: {{ clases.Descripcion }}</p>
         <p>Instructor: {{ clases.Nombre_Instructor }}</p>
         <p>Fecha: {{ clases.Fecha }}</p>
         <p>Hora: {{ clases.Hora }}</p>
-        <p>Cupo: {{ clases.Cupo }}</p>
+        <p>Cupos: {{ clases.Cupo }}</p>
         <!-- Button trigger modal -->
         <button
           type="button"
-          class="btn btn-dark"
+          class="btn btn-dark float-start"
           data-bs-toggle="modal"
           data-bs-target="#ModificarClases"
           [routerLink]="['/editClass', clases._id]"
@@ -108,7 +111,7 @@
         </button>
         <button
           type="button"
-          class="btn btn-dark"
+          class="btn btn-danger float-end"
           (click)="eliminarClase(clases._id)"
         >
           Eliminar
@@ -118,7 +121,7 @@
         <br />
         <button
           type="button"
-          class="btn btn-dark"
+          class="btn btn-success float-start"
           data-bs-toggle="modal"
           data-bs-target="#Inscribir"
           (click)="setId(clases._id)"

@@ -41,6 +41,10 @@ export class CrearClaseComponent implements OnInit {
     this.consultaInstructor();
   }
 
+  convertirFecha(fecha: any) {
+    return fecha.toISOString().substring(0, 10);
+  }
+
   agregarClase() {
     const CLASE: clases = {
       Nombre_Clase: this.classForm.get('Nombre_Clase')?.value,

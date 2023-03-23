@@ -6,7 +6,7 @@ export class clases {
   Fecha: string;
   Hora: string;
   Cupo: number;
-  Foto_Clase: File;
+  Foto_Clase: string;
 
   constructor(
     Nombre_Clase: string,
@@ -15,7 +15,7 @@ export class clases {
     Fecha: string,
     Hora: string,
     Cupo: number,
-    Foto_Clase: File
+    Foto_Clase: string
   ) {
     this.Nombre_Clase = Nombre_Clase;
     this.Descripcion = Descripcion;
