@@ -15,6 +15,9 @@ export class FilterPipe implements PipeTransform {
       if (clase['Nombre_Clase'] === filtertring) {
         clases.push(clase);
       }
+      if (clase['Nombre_Instructor'] === filtertring) {
+        clases.push(clase);
+      }
     }
     return clases;
   }
